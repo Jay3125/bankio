@@ -1,0 +1,89 @@
+/* Theme tokens and safe-area spacing shared by every component. */
+:root {
+        color-scheme: light;
+        --bg: #e0e0e0;
+        --app: #f4f4f4;
+        --side: #fff;
+        --card: #fff;
+        --ink: #111;
+        --mute: #6b6b6b;
+        --line: #cfcfcf;
+        --green: #0b4a40;
+        --teal: #1f7068;
+        --sage: #a9c7c2;
+        --soft: #ececec;
+        --head: #141414;
+        --ok: #0b5a3e;
+        --bad: #b3261e;
+        --chip: #e6efed;
+        --badbg: #f7dcdc;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      /* Uses dark colors automatically unless the user chose light mode. */
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          color-scheme: dark;
+          --bg: #0d0f0f;
+          --app: #161a19;
+          --side: #1c2120;
+          --card: #1f2524;
+          --ink: #eef2f1;
+          --mute: #9aa6a3;
+          --line: #37403e;
+          --soft: #283130;
+          --head: #050606;
+          --ok: #6fd1a8;
+          --bad: #ff8f87;
+          --chip: #25403b;
+          --badbg: #4a2523;
+        }
+      }
+      /* Applies the manually selected dark theme. */
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #0d0f0f;
+        --app: #161a19;
+        --side: #1c2120;
+        --card: #1f2524;
+        --ink: #eef2f1;
+        --mute: #9aa6a3;
+        --line: #37403e;
+        --soft: #283130;
+        --head: #050606;
+        --ok: #6fd1a8;
+        --bad: #ff8f87;
+        --chip: #25403b;
+        --badbg: #4a2523;
+      }
+      /* Keeps anchored content clear of device safe areas. */
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      /* Makes component dimensions include padding and borders. */
+      * {
+        box-sizing: border-box;
+      }
+      /* Sets the page canvas, typography, and outer spacing. */
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hanken Grotesk", system-ui, sans-serif;
+        font-weight: 400;
+        padding: 24px;
+      }
+      /* Gives all buttons consistent text and pointer behavior. */
+      button {
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+      }
+      /* Provides a visible keyboard focus indicator for controls. */
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 2px solid var(--teal);
+        outline-offset: 2px;
+      }

@@ -1,0 +1,1078 @@
+      /* .app: centers the dashboard shell and lays out sidebar plus content. */
+      .app {
+        width: 100%;
+        margin: 0 auto;
+        background: var(--app);
+        border-radius: 36px;
+        display: grid;
+        grid-template-columns: 268px minmax(0, 1fr);
+        overflow: hidden;
+        min-height: calc(100vh - 48px);
+      }
+      /* .side: styles the dashboard navigation panel. */
+      .side {
+        background: var(--side);
+        padding: 30px 28px;
+      }
+      /* .logo: styles the clickable Bankio workspace selector. */
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 25px;
+        font-weight: 400;
+        width: 100%;
+        border: 0;
+        padding: 0;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+      }
+      /* .logo img: sizes the brand mark in the workspace selector. */
+      .logo img {
+        width: 26px;
+        height: 26px;
+      }
+      /* .logo .chev: positions the workspace dropdown arrow. */
+      .logo .chev {
+        margin-left: auto;
+        color: var(--mute);
+        transition: transform 0.2s ease;
+      }
+      /* .workspace-picker: anchors the workspace menu beneath the brand button. */
+      .workspace-picker {
+        position: relative;
+        margin-bottom: 56px;
+      }
+      /* .chev.open: rotates the workspace arrow while its menu is open. */
+      .logo .chev.open {
+        transform: rotate(180deg);
+      }
+      /* .workspace-menu: styles the workspace dropdown panel. */
+      .workspace-menu {
+        position: absolute;
+        z-index: 5;
+        top: calc(100% + 10px);
+        left: 0;
+        width: 100%;
+        padding: 14px;
+        display: grid;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        box-shadow: 0 12px 30px rgb(0 0 0 / 12%);
+      }
+      /* .workspace-label: styles the workspace menu's small caption. */
+      .workspace-label {
+        color: var(--mute);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+      /* .workspace-name: emphasizes the currently selected workspace. */
+      .workspace-name {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      /* .workspace-menu button: styles the workspace menu close action. */
+      .workspace-menu button {
+        border: 0;
+        border-radius: 8px;
+        padding: 8px;
+        background: var(--soft);
+        text-align: left;
+      }
+      /* .grp: styles sidebar navigation group headings. */
+      .grp {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 0 0 18px;
+      }
+      /* .nav: stacks the sidebar navigation links. */
+      .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 44px;
+      }
+      /* .nav button: styles each sidebar navigation item. */
+      .nav button {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 0;
+        background: none;
+        text-align: left;
+        padding: 11px 14px;
+        border-radius: 9px;
+        font-size: 15px;
+        color: var(--ink);
+      }
+      /* .nav button svg: sets icon size and emphasis in navigation items. */
+      .nav button svg {
+        width: 15px;
+        height: 15px;
+        opacity: 0.75;
+      }
+      /* .nav button.on: highlights the currently selected section. */
+      .nav button.on {
+        background: var(--green);
+        color: #fff;
+      }
+      /* .nav button:not(.on):hover: highlights an inactive hovered link. */
+      .nav button:not(.on):hover {
+        background: var(--soft);
+      }
+      /* .main: adds spacing around the page header and active page. */
+      .main {
+        padding: 24px 32px 28px;
+        min-width: 0;
+      }
+      /* .top: aligns the welcome message and account action buttons. */
+      .top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--line);
+      }
+      /* .top-copy: lets the welcome text shrink without displacing header controls. */
+      .top-copy {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      /* .top h2: formats the account welcome heading. */
+      .top h2 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      /* .top p: formats the supporting welcome message. */
+      .top p {
+        margin: 4px 0 0;
+        font-size: 13px;
+        color: var(--mute);
+      }
+      /* .top-actions: keeps header controls grouped and prevents them from shrinking. */
+      .top-actions {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 12px;
+      }
+      /* .header-action: positions header popovers beside their trigger buttons. */
+      .header-action {
+        position: relative;
+      }
+      /* .ic: creates circular icon buttons in the header. */
+      .ic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1.5px solid var(--ink);
+        background: none;
+        display: grid;
+        place-items: center;
+        position: relative;
+      }
+      /* .ic svg: sizes icons inside header action buttons. */
+      .ic svg {
+        width: 16px;
+        height: 16px;
+      }
+      /* .ic i: displays the unread-message indicator dot. */
+      .ic i {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #d22;
+      }
+      /* .header-popover: styles messages, notifications, and account menus. */
+      .header-popover {
+        position: absolute;
+        z-index: 10;
+        top: calc(100% + 12px);
+        right: 0;
+        width: min(260px, calc(100vw - 48px));
+        padding: 16px;
+        display: grid;
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--card);
+        box-shadow: 0 14px 32px rgb(0 0 0 / 14%);
+      }
+      /* .header-popover p: styles helper text in header popovers. */
+      .header-popover p {
+        margin: 0;
+        color: var(--mute);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      /* .account-popover strong: wraps long display names inside the account menu. */
+      .account-popover strong {
+        overflow-wrap: anywhere;
+      }
+      /* .account-email: styles the account type in the profile menu. */
+      .account-email {
+        color: var(--mute);
+        font-size: 12px;
+      }
+      /* .account-menu-label: separates account actions from authentication links. */
+      .account-menu-label {
+        padding-top: 6px;
+        border-top: 1px solid var(--line);
+        color: var(--mute);
+        font-size: 11px;
+      }
+      /* .account-popover button: styles actions in the account menu. */
+      .account-popover button {
+        border: 0;
+        border-radius: 9px;
+        padding: 9px 10px;
+        background: var(--soft);
+        text-align: left;
+      }
+      /* .av: styles the account avatar and account-menu trigger. */
+      .av {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e7b89a, #b9805f);
+        display: grid;
+        place-items: center;
+        font-weight: 600;
+        color: #fff;
+        font-size: 15px;
+      }
+      /* .bar: aligns the page title, search field, and optional filter. */
+      .bar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 22px 0 22px;
+        min-width: 0;
+      }
+      /* .bar h1: formats the active page heading. */
+      .bar h1 {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 400;
+        flex: 1;
+        min-width: 0;
+      }
+      /* .search: styles page-level search fields. */
+      .search {
+        display: flex;
+        align-items: center;
+        background: var(--soft);
+        border-radius: 30px;
+        padding: 0 16px;
+        width: 340px;
+        height: 40px;
+      }
+      /* .search:focus-within: keeps the focus indicator rounded around the full search control. */
+      .search:focus-within {
+        outline: 2px solid var(--teal);
+        outline-offset: 2px;
+      }
+      /* .search input: sizes and colors the editable search text. */
+      .search input {
+        border: 0;
+        background: none;
+        flex: 1;
+        font: inherit;
+        font-size: 13px;
+        color: var(--ink);
+        min-width: 0;
+      }
+      /* .search input:focus-visible: moves keyboard focus from a square input outline to the rounded search shell. */
+      .search input:focus-visible {
+        outline: none;
+        outline-offset: 0;
+      }
+      /* .search-submit: makes the search icon a usable search action. */
+      .search-submit {
+        display: grid;
+        place-items: center;
+        flex: none;
+        border: 0;
+        padding: 0;
+        background: none;
+        color: var(--mute);
+      }
+      /* .search-submit svg: sizes the search action icon. */
+      .search-submit svg {
+        width: 15px;
+        height: 15px;
+      }
+      /* .search-submit:hover: emphasizes the search action on hover. */
+      .search-submit:hover {
+        color: var(--teal);
+      }
+      /* .fl: styles the transaction filter toggle button. */
+      .fl {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 0;
+        background: var(--soft);
+        display: grid;
+        place-items: center;
+      }
+      /* .fl.active: highlights the filter control while its menu is open. */
+      .fl.active {
+        background: var(--chip);
+        color: var(--green);
+      }
+      /* .filter-control: anchors the transaction filter menu. */
+      .filter-control {
+        position: relative;
+      }
+      /* .filter-menu: styles the transaction status and category controls. */
+      .filter-menu {
+        position: absolute;
+        z-index: 8;
+        top: calc(100% + 10px);
+        right: 0;
+        width: 260px;
+        padding: 16px;
+        display: grid;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--card);
+        box-shadow: 0 14px 32px rgb(0 0 0 / 14%);
+      }
+      /* .filter-menu label: stacks each filter name above its dropdown. */
+      .filter-menu label {
+        display: grid;
+        gap: 7px;
+        color: var(--mute);
+        font-size: 12px;
+      }
+      /* .filter-menu .sel: makes filter dropdowns fill the menu width. */
+      .filter-menu .sel {
+        width: 100%;
+      }
+      /* .filter-clear: styles the action that resets transaction filters. */
+      .filter-clear {
+        border: 0;
+        border-radius: 9px;
+        padding: 9px 10px;
+        background: var(--soft);
+        text-align: center;
+      }
+      /* .card: provides the shared surface for dashboard cards. */
+      .card {
+        background: var(--card);
+        border-radius: 22px;
+        padding: 18px 20px;
+      }
+      /* .stat: lays out a financial metric and its change indicator. */
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        position: relative;
+        min-width: 0;
+        min-height: 106px;
+      }
+      /* .stat .lb: styles the metric label. */
+      .stat .lb {
+        font-size: 15px;
+        line-height: 1.25;
+        width: 70px;
+      }
+      /* .stat .num: emphasizes the metric amount. */
+      .stat .num {
+        font-size: clamp(24px, 3.05vw, 44px);
+        font-weight: 300;
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+        letter-spacing: -0.5px;
+      }
+      /* .stat .lm: aligns the metric comparison period. */
+      .stat .lm {
+        font-size: 11px;
+        color: var(--mute);
+        text-align: right;
+        line-height: 1.2;
+      }
+      /* .pill: displays the percentage change badge. */
+      .pill {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        font-size: 8px;
+        padding: 2px 6px;
+        border-radius: 3px;
+        background: var(--chip);
+        color: var(--ok);
+      }
+      /* .pill.bad: colors a negative-change badge. */
+      .pill.bad {
+        background: var(--badbg);
+        color: var(--bad);
+      }
+      /* .arr: positions the metric trend arrow. */
+      .arr {
+        position: absolute;
+        left: 20px;
+        bottom: 14px;
+        font-size: 14px;
+      }
+      /* .arr.dn: colors a downward trend arrow. */
+      .arr.dn {
+        color: var(--bad);
+      }
+      /* .g1: arranges the income, expense, and revenue dashboard area. */
+      .g1 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+      /* .left: stacks the income and expense metric cards. */
+      .left {
+        display: grid;
+        gap: 14px;
+      }
+      /* .rev: arranges the revenue savings and available balance cards. */
+      .rev {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        align-items: stretch;
+      }
+      /* .rev .a h3: styles the revenue card heading. */
+      .rev .a h3 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 500;
+        display: inline-block;
+      }
+      /* .rev .a small: styles the revenue period label. */
+      .rev .a small {
+        display: block;
+        color: var(--mute);
+        font-size: 11px;
+      }
+      /* .rh: aligns the revenue title with its amount. */
+      .rh {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      /* .rh .big: emphasizes the current revenue value. */
+      .rh .big {
+        font-size: 30px;
+        font-weight: 400;
+        border-left: 1px solid var(--line);
+        padding-left: 16px;
+      }
+      /* .sv: styles the inset total-savings panel. */
+      .sv {
+        background: var(--soft);
+        border-radius: 16px;
+        padding: 12px 14px;
+        margin-top: 14px;
+      }
+      /* .sv small: styles the savings panel label. */
+      .sv small {
+        font-size: 9px;
+        color: var(--mute);
+      }
+      /* .sv .n: emphasizes the total savings amount. */
+      .sv .n {
+        font-size: 32px;
+        font-weight: 400;
+      }
+      /* .sv .y: highlights the savings status message. */
+      .sv .y {
+        font-size: 9px;
+        color: var(--ok);
+      }
+      /* .dark: styles the dark-green available-savings card. */
+      .dark {
+        background: var(--green);
+        color: #fff;
+        border-radius: 22px;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      /* .dark .n: emphasizes the available savings balance. */
+      .dark .n {
+        font-size: 42px;
+        margin: 18px 0;
+        font-weight: 400;
+      }
+      /* .dark small: styles supporting text in the savings card. */
+      .dark small {
+        font-size: 11px;
+      }
+      /* .dark b: highlights the savings percentage. */
+      .dark b {
+        color: #f2d94e;
+        font-weight: 500;
+      }
+      /* .g2: arranges the expenditure and monthly chart panels. */
+      .g2 {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.45fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+      /* Keeps chart panels inside their grid tracks instead of expanding the page. */
+      .g2 > * {
+        min-width: 0;
+      }
+      /* .donut: adds padding around the expense category chart. */
+      .donut {
+        padding: 26px 24px;
+      }
+      /* .dw: provides a positioning area for the donut chart and labels. */
+      .dw {
+        position: relative;
+        width: min(260px, 100%);
+        height: 240px;
+        margin: 0 auto 10px;
+      }
+      /* Scales the donut graphic to the available chart width. */
+      .dw svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      /* .dw .ctr: centers the donut chart caption. */
+      .dw .ctr {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-size: 13px;
+      }
+      /* .dw .tag: styles percentage labels around the donut chart. */
+      .dw .tag {
+        position: absolute;
+        background: var(--soft);
+        border-radius: 20px;
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+      /* .leg: spaces the expense chart legend rows. */
+      .leg {
+        display: grid;
+        gap: 22px;
+        margin-top: 22px;
+      }
+      /* .leg div: aligns each category color, name, amount, and percentage. */
+      .leg div {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 17px;
+        color: var(--mute);
+      }
+      /* .leg i: draws a circular category color marker. */
+      .leg i {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      /* .leg .v: aligns a category's currency amount. */
+      .leg .v {
+        margin-left: auto;
+        font-size: 12px;
+        color: var(--ink);
+      }
+      /* .leg .p: reserves space for a category's percentage. */
+      .leg .p {
+        font-size: 11px;
+        color: var(--ok);
+        width: 50px;
+      }
+      /* .chart h3: formats the monthly chart heading. */
+      .chart h3 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 400;
+      }
+      /* Allows the monthly chart heading and controls to shrink within their panel. */
+      .chart,
+      .chart > div:first-child,
+      .chart h3 {
+        min-width: 0;
+      }
+      /* .sel: styles month and transaction-filter dropdown controls. */
+      .sel {
+        appearance: none;
+        min-height: 40px;
+        border: 1px solid var(--line);
+        background-color: var(--card);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        border-radius: 12px;
+        padding: 8px 38px 8px 14px;
+        color: var(--ink);
+        font-size: 12px;
+        cursor: pointer;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      /* .sel:hover: gives dropdown controls a clear interactive state. */
+      .sel:hover {
+        border-color: var(--teal);
+      }
+      /* .sel option: keeps native dropdown options readable in both themes. */
+      .sel option {
+        background: var(--card);
+        color: var(--ink);
+      }
+      /* .section-page: spaces pages opened from the sidebar navigation. */
+      .section-page {
+        padding-top: 22px;
+      }
+      /* .section-page h1: formats the title on a secondary section page. */
+      .section-page h1 {
+        margin: 0 0 22px;
+        font-size: 32px;
+        font-weight: 400;
+      }
+      /* .section-card: presents the selected section's introduction. */
+      .section-card {
+        max-width: 640px;
+        padding: 30px;
+      }
+      /* .section-mark: displays the ready-state icon in a section page. */
+      .section-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--chip);
+        color: var(--ok);
+      }
+      /* .section-card h2: styles the section introduction heading. */
+      .section-card h2 {
+        margin: 18px 0 8px;
+        font-size: 22px;
+        font-weight: 500;
+      }
+      /* .section-card p: styles the section's explanatory text. */
+      .section-card p {
+        margin: 0 0 18px;
+        color: var(--mute);
+      }
+      /* .section-note: displays the section's integration status. */
+      .section-note {
+        color: var(--teal);
+        font-size: 13px;
+      }
+      /* .plot: defines the chart plotting area and y-axis column. */
+      .plot {
+        position: relative;
+        height: 370px;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 130px 1fr;
+      }
+      /* .ylab: spaces value labels along the chart's y-axis. */
+      .ylab {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--mute);
+        padding-bottom: 36px;
+      }
+      /* .area: contains chart grid lines and monthly bars. */
+      .area {
+        position: relative;
+        border-bottom: 1px solid var(--ink);
+      }
+      /* .area .gl: draws a horizontal chart grid line. */
+      .area .gl {
+        position: absolute;
+        left: 0;
+        right: 0;
+        border-top: 1px solid var(--line);
+      }
+      /* .cols: aligns monthly chart bars along the baseline. */
+      .cols {
+        position: absolute;
+        inset: 0 0 0 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+      }
+      /* .col: styles an individual monthly chart bar. */
+      .col {
+        width: 38px;
+        background: var(--teal);
+        border-radius: 12px 12px 12px 12px;
+        transition: height 0.5s;
+      }
+      /* .xl: positions day labels beneath the chart bars. */
+      .xl {
+        grid-column: 2;
+        display: flex;
+        justify-content: space-around;
+        font-size: 13px;
+        padding-top: 12px;
+      }
+      /* .xl span: gives each day label a matching bar width. */
+      .xl span {
+        width: 38px;
+        text-align: center;
+      }
+      /* .t h3: formats the transaction activity heading. */
+      .t h3 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 500;
+      }
+      /* .t p: styles the transaction activity description. */
+      .t p {
+        margin: 6px 0 0;
+        color: var(--mute);
+        font-size: 13px;
+      }
+      /* .th: lays out the transaction table's column headings. */
+      .th {
+        background: var(--head);
+        color: #fff;
+        border-radius: 22px 22px 0 0;
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: 1.1fr 1.5fr 1.2fr 1.2fr 0.9fr 0.9fr 1fr;
+        padding: 18px 36px;
+        font-size: 14px;
+      }
+      /* .tb: scrolls the transaction rows inside a rounded table body. */
+      .tb {
+        background: var(--soft);
+        border-radius: 0 0 22px 22px;
+        padding: 0 36px;
+        max-height: 420px;
+        overflow: auto;
+      }
+      /* .tr: aligns a transaction's date, details, status, and exports. */
+      .tr {
+        display: grid;
+        grid-template-columns: 1.1fr 1.5fr 1.2fr 1.2fr 0.9fr 0.9fr 1fr;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+      }
+      /* .tr:last-child: removes the bottom divider from the final row. */
+      .tr:last-child {
+        border-bottom: 0;
+      }
+      /* .who: aligns a transaction avatar with its description. */
+      .who {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      /* .who small: styles the transaction type above its description. */
+      .who small {
+        display: block;
+        font-size: 8px;
+        color: var(--mute);
+      }
+      /* .dot: displays a colored transaction initials avatar. */
+      .dot {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+        flex: none;
+      }
+      /* .ok: colors a successful transaction status. */
+      .ok {
+        color: var(--ok);
+      }
+      /* .fail: colors a failed transaction status. */
+      .fail {
+        color: var(--bad);
+      }
+      /* .exp: stacks the per-transaction export actions. */
+      .exp {
+        display: grid;
+        gap: 6px;
+        font-size: 9px;
+      }
+      /* .exp button: styles an individual PDF or CSV export action. */
+      .exp button {
+        border: 0;
+        background: none;
+        text-align: left;
+        padding: 0;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      /* .foot: aligns transaction sort controls and export feedback. */
+      .foot {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+        color: var(--mute);
+        font-size: 16px;
+      }
+      /* .foot button: styles the transaction sort toggle. */
+      .foot button {
+        border: 0;
+        background: none;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 16px;
+        color: var(--mute);
+      }
+      /* .empty: presents the no-matching-transactions message. */
+      .empty {
+        padding: 34px;
+        text-align: center;
+        color: var(--mute);
+        font-size: 14px;
+      }
+      /* .nb: stacks the transaction summary's balance and savings details. */
+      .nb {
+        display: grid;
+        gap: 4px;
+        font-size: 9px;
+        color: var(--mute);
+        align-content: center;
+      }
+      /* .nb .n: emphasizes the net balance amount. */
+      .nb .n {
+        font-size: 26px;
+        color: var(--ink);
+      }
+      /* .g3: arranges the transaction income, expense, and balance cards. */
+      .g3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      /* .rate: badges the income savings-rate figure. */
+      .rate {
+        border: 1px solid var(--teal);
+        border-radius: 10px;
+        font-size: 8px;
+        text-align: center;
+        padding: 2px 6px;
+        color: var(--teal);
+      }
+      /* .scroll: enables horizontal scrolling for the wide transaction table. */
+      .scroll {
+        overflow-x: auto;
+      }
+      /* Responsive layout adjustments for tablet and mobile viewports. */
+      @media (max-width: 1100px) {
+        .app {
+          grid-template-columns: minmax(0, 1fr);
+          min-height: calc(100vh - 48px);
+        }
+        .side {
+          padding: 20px;
+        }
+        .nav {
+          display: none;
+        }
+        .side .grp.o {
+          display: block;
+        }
+        .nav.m,
+        .nav.o {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-bottom: 0;
+        }
+        /* .workspace-picker: keeps the workspace selector compact on mobile. */
+        .workspace-picker {
+          margin-bottom: 16px;
+        }
+        .g1,
+        .g2,
+        .g3,
+        .rev {
+          grid-template-columns: 1fr;
+        }
+        .main {
+          padding: 20px;
+        }
+        .bar {
+          flex-wrap: wrap;
+        }
+        .search {
+          width: 100%;
+          order: 3;
+        }
+        .bar h1 {
+          font-size: 26px;
+        }
+        .stat .num {
+          font-size: 34px;
+        }
+        .plot {
+          grid-template-columns: 90px 1fr;
+        }
+        .th,
+        .tr {
+          min-width: 760px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .tb {
+          overflow: visible;
+          padding: 0;
+        }
+        .scroll {
+          border-radius: 22px;
+        }
+        .top p {
+          display: none;
+        }
+        .header-popover {
+          width: min(260px, calc(100vw - 48px));
+        }
+      }
+      /* Stacks dense metrics and charts before the content column gets narrow. */
+      @media (max-width: 1250px) {
+        .rev {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      /* Stacks the welcome text and controls when both cannot fit comfortably. */
+      @media (max-width: 560px) {
+        body {
+          padding: 12px;
+        }
+        .app {
+          border-radius: 22px;
+          min-height: calc(100vh - 24px);
+        }
+        .side {
+          padding: 16px;
+        }
+        .nav.m,
+        .nav.o {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 4px;
+        }
+        .nav button {
+          gap: 8px;
+          padding: 9px 8px;
+          font-size: 13px;
+        }
+        .workspace-menu {
+          position: static;
+          margin-top: 10px;
+        }
+        .main {
+          padding: 16px;
+        }
+        .top {
+          flex-wrap: wrap;
+        }
+        .top-copy {
+          flex-basis: 100%;
+        }
+        .top-actions {
+          margin-left: auto;
+        }
+        .bar {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 40px;
+          align-items: center;
+        }
+        .bar h1 {
+          font-size: 24px;
+        }
+        .bar .search {
+          grid-column: 1 / -1;
+          order: 0;
+          width: 100%;
+        }
+        .bar .filter-control {
+          grid-column: 2;
+          grid-row: 1;
+        }
+        .filter-menu,
+        .header-popover {
+          width: min(260px, calc(100vw - 96px));
+        }
+        .t {
+          flex-direction: column;
+          align-items: stretch !important;
+          gap: 12px;
+        }
+        .t > div {
+          min-width: 0;
+        }
+        .t > .sel {
+          align-self: flex-end;
+        }
+        .stat {
+          gap: 8px;
+        }
+        .stat .lb {
+          width: 56px;
+          font-size: 12px;
+        }
+        .stat .num {
+          font-size: clamp(18px, 5.2vw, 23px);
+        }
+        .stat .lm {
+          font-size: 10px;
+        }
+        .rh {
+          flex-wrap: wrap;
+        }
+        .rh .big {
+          font-size: 24px;
+        }
+        .leg div {
+          gap: 8px;
+          font-size: 12px;
+        }
+        .leg .p {
+          width: 38px;
+        }
+        .chart > div:first-child {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .chart > div:first-child h3 {
+          flex: 1 1 140px;
+        }
+        .plot {
+          grid-template-columns: minmax(68px, 90px) minmax(0, 1fr);
+        }
+        .dw .tag:last-child {
+          left: 50% !important;
+          transform: translateX(-50%);
+        }
+      }
